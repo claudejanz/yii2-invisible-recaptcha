@@ -1,0 +1,21 @@
+{
+    "name": "claudejanz/yii2-invisible-recaptcha",
+    "description": "Google Invisible reCaptcha for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "claudejanz@gmail.com",
+            "email": "claudejanz@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "claudejanz\\yii2invisiblerecaptcha\\": ""
+        }
+    }
+}
