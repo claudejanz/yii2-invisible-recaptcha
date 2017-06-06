@@ -40,10 +40,7 @@ class InvisibleRecaptcha extends Widget
     public function init()
     {
         $this->_checkConfig();
-$this->_registerScript();
-
-
-        
+        $this->_registerScript();
         parent::init();
     }
 
@@ -63,12 +60,15 @@ $this->_registerScript();
 
     private function _checkConfig()
     {
-        if (empty(Yii::$app->captcha)) {
-            throw new InvalidConfigException('Required `captcha` component isn\'t set.');
+        if (empty(Yii::$app->params['captcha'])) {
+            throw new InvalidConfigException('Required `captcha` params isn\'t set.');
         }
 
-        if (empty(Yii::$app->captcha->siteKey)) {
-            throw new InvalidConfigException('Required `siteKey` param isn\'t set.');
+        if (empty(Yii::$app->params['captcha']['siteKey'])) {
+            throw new InvalidConfigException('Required `siteKey` params isn\'t set.');
+        }
+        if (empty(Yii::$app->params['captcha']['secret'])) {
+            throw new InvalidConfigException('Required `secret` params isn\'t set.');
         }
     }
 
@@ -80,11 +80,10 @@ $this->_registerScript();
                 . 'grecaptcha.execute();'
                 . '}');
         $view->registerJsFile($this->api_url, [
-            'defer'=>true,
-            'async '=>true,
-            'onload'=>$this->callback,
-            ]);
-        
+            'defer' => true,
+            'async ' => true,
+            'onload' => $this->callback,
+        ]);
     }
 
 }
